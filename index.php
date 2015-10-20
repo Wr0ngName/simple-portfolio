@@ -28,6 +28,7 @@
     } else if (array_key_exists($cur_Route, $cfg_Routes)) {
       require_once('core/data/'.$cur_Route.'.db.php');
       require_once('views/'.$cur_Route.'.tpl.php');
+      if($cfg_Count) require_once('core/counter.php');
     } else
     	require_once('views/error.tpl.php');
   }
