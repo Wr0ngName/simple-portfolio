@@ -1,5 +1,7 @@
 <?php
 	session_start();
+	include('core/config.php');
+
 	if(isset($_GET['done']))
 	{
 ?>
@@ -17,7 +19,6 @@
 		file_put_contents('./core/data/global.db.php', "<?php\n\t".'$cfg_SiteName = '.var_export(htmlentities($_POST['siteName']), true).';'."\n\t".'$cfg_SiteDesc = '.var_export(htmlentities($_POST['siteDesc']), true).';'."\n?>");
 		file_put_contents('./core/data/login.db.php', "<?php\n\t".'$login = '.var_export($_POST['login'], true).';'."\n\t".'$pwd = '.var_export(sha1($_POST['pwd']), true).';'."\n?>");
 		$_SESSION['admin_logged'] = 1;
-		unlink('./install.php');
 		header('Location:index.php?admin&done');
 	}
 	else
@@ -57,6 +58,29 @@
 		  		{
 		  			list($txt, $ext) = explode(".", $filename);
 	  	  			if(!$filename->isDir() && $ext == "db") echo "\t\t\t".'<div class="col-md-8">'.$filename.'</div><div class="col-md-4">'.(!is_writable($filename)?'<span style="color:red;">Requires writing access</span>':'<span style="color:green;">Has write access</span>').'</div>';
+		  		}
+
+		  		if($cfg_Count)
+		  		{
+					try
+					{
+						$path = './core/data/counter.db.sqlite';
+
+						$db = new PDO('sqlite:'.$path);
+
+						$path = realpath($path);
+
+						$db->exec("CREATE TABLE counter (id INTEGER PRIMARY KEY, counter INTEGER)");
+						$db->exec("INSERT INTO counter (id, counter) VALUES (1, 0)");
+
+		  	  			echo "\t\t\t".'<div class="col-md-8">Count visits database ('.$path.')</div><div class="col-md-4"><span style="color:green;">Created successfully</span><br />&nbsp;</div>';
+
+						$db = NULL;
+					}
+					catch(PDOException $e)
+					{
+		  	  			echo "\t\t\t".'<div class="col-md-8">Count visits database ('.$path.')</div><div class="col-md-4"><span style="color:red;">Requires writing access</span><br />&nbsp;</div>';
+					}
 		  		}
 ?>
 	  	</div>
