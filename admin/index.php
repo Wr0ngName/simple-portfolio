@@ -1,5 +1,7 @@
 <?php
   if(!isset($cur_Route)) header('Location:../index.php?admin');
+
+  if($cfg_Count) include('./admin/counter.php');
   
   if(isset($_GET['refresh'])) {
 ?>
@@ -21,6 +23,17 @@
 	  Start now using your website!<br />
 	  Note: Changes can take up to 3 seconds to be effective, refresh if you see no change.
 	</div>
+<?php
+	}
+	if($cfg_Count)
+	{
+?>
+<div class="row">
+	<div class="col-md-12">
+	  <h2>Visit counter: <?php echo $res_Counter; ?></h2>
+	</div>
+</div>
+<hr />
 <?php
 	}
 ?>
