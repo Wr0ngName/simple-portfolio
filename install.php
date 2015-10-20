@@ -1,7 +1,4 @@
 <?php
-	session_start();
-	include('core/config.php');
-
 	if(isset($_GET['done']))
 	{
 ?>
