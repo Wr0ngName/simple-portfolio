@@ -12,6 +12,8 @@
   	  ':wordpress.com' 		=> 'Blog',        //external links start with ":" (comment to hide)
   	);
 
+  $cfg_Count = true;  // Turned to False will disable the counter installation and its functionning
+
   $cfg_ItemsPerRow 	= 3;
 
   $cfg_UploadValidFormats = array("jpg","jpeg", "png", "gif", "bmp");
