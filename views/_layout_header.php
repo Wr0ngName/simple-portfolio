@@ -6,8 +6,8 @@
 	
 	<meta charset="UTF-8">
 	<meta name="description" content="<?php echo $cfg_SiteName.', '.$cfg_SiteDesc; ?>">
-	<meta name="keywords" content="cristina maul, artist, concept, art, 3d, character, portfolio, animation, graphic, design, 2d, drawing">
-	<meta name="author" content="Cristina Maul">
+	<meta name="keywords" content="artist, concept, art, 3d, character, portfolio, animation, graphic, design, 2d, drawing">
+	<meta name="author" content="<?php echo $cfg_SiteName; ?>">
 
 	<link href=".<?php if(isset($subz)) echo $subz; ?>/assets/css/normalize.css" rel="stylesheet">
 	<link href=".<?php if(isset($subz)) echo $subz; ?>/assets/css/bootstrap.min.css" rel="stylesheet">
