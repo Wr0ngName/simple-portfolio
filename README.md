@@ -1,4 +1,4 @@
-# simple_portfolio
+# simple-portfolio
 
 Thanks for giving a try, this is a really simple Portfolio, with possibility to use only flat files, so no database.
 Developed by wr0ng.name, 100% free!
